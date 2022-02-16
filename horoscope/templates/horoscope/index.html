@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'horoscope/css/index.css' %}">
+{% endblock%}
+
+{% block title %}
+Menu
+{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for zodiac in zodiacs %}
+        <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}" style="text-decoration: none;">{{ forloop.counter }}. {{ zodiac }}</a></li>
+    {% empty %}
+        <h4>Список пуст</h4>
+    {% endfor %}
+  </ul>
+{% endblock %}
