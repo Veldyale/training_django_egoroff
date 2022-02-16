@@ -20,6 +20,10 @@ media
 *.py[cod]
 *$py.class
 
+# Specific files #
+##################
+my_page/settings.py
+
 # C extensions
 *.so
 
