@@ -22,7 +22,7 @@ media
 
 # Specific files #
 ##################
-my_page/settings.py
+/my_page/settings.py
 
 # C extensions
 *.so
