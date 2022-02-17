@@ -11,4 +11,11 @@ Movies
 {% endblock %}
 
 {% block content %}
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <a href="{{ movie.get_url }}">{{ movie.name }}</a> - {{ movie.rating }}%
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

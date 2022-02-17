@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_additional %}
+{% endblock%}
+
+{% block title %}
+Movie
+{% endblock %}
+
+{% block content %}
+    <h1>Информация о фильме: {{ movie.name }}</h1>
+    <h2>Рейтинг: {{ movie.rating }}</h2>
+    <h2>Год выхода в прокат: {{ movie.year }}</h2>
+    <h2>Бюджет: {{ movie.budget }}</h2>
+
+{% endblock %}
