@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = 'Наша админка'  # Название админки
+admin.site.index_title = 'Главный заголовок'  # Название заголовка
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('horoscope/', include('horoscope.urls')),
@@ -23,4 +26,5 @@ urlpatterns = [
     path('calculate_geometry/', include('geometry.urls')),
     path('movie_app/', include('movie_app.urls')),
     path('book_app/', include('book_app.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]

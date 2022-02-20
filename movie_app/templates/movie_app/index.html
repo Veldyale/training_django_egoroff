@@ -11,11 +11,19 @@ Movies
 {% endblock %}
 
 {% block content %}
+<div>
     <ul>
         {% for movie in movies %}
-            <li>
-                <a href="{{ movie.get_url }}">{{ movie.name }}</a> - {{ movie.rating }}%
-            </li>
+        <li>
+            <a href="{{ movie.get_url }}">{{ movie.name }}</a> - {{ movie.rating }}%
+        </li>
         {% endfor %}
     </ul>
+</div>
+<div>
+    <h3>Средний бюджет - {{ agg.budget__avg }}</h3>
+    <h3>Фильм с максимальным рейтингом - {{ agg.rating__max }}</h3>
+    <h3>Фильм с минимальным рейтингом - {{ agg.rating__min }}</h3>
+    <h3>Всего фильмов - {{ total }}</h3>
+</div>
 {% endblock %}
