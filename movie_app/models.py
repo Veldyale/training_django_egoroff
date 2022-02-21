@@ -22,7 +22,8 @@ class Movie(models.Model):
 
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=USD)
     slug = models.SlugField(default='', null=False, db_index=True)
-    director = models.ForeignKey('Director', on_delete=models.PROTECT, null=True, blank=True)
+    director = models.ForeignKey('Director', on_delete=models.CASCADE, null=True, blank=True)
+    actors = models.ManyToManyField('Actor')
 
     def get_url(self):
         return reverse('movie-detail', args=[self.slug])
@@ -30,8 +31,27 @@ class Movie(models.Model):
     def __str__(self):
         return f'{self.name} - {self.rating}%'
 
+
 class Director(models.Model):
     full_name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.full_name
+
+
+class Actor(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+    GENDERS = [
+        (MALE, 'Мужчина'),
+        (FEMALE, 'Женщина'),
+    ]
+
+    full_name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=1, choices=GENDERS, default=MALE)
+
+    def __str__(self):
+        if self.gender == self.MALE:
+            return f'Актер - {self.full_name}'
+        else:
+            return f'Актриса - {self.full_name}'

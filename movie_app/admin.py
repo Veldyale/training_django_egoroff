@@ -35,6 +35,7 @@ class MovieAdmin(admin.ModelAdmin):
     # readonly_fields = ['year']  # запрет на изменение выбранных полей
     prepopulated_fields = {'slug': ('name',)}  # вычисляемое поле, в данном случае сам пишет slug по имени
     list_display = ['name', 'rating', 'director', 'currency', 'budget', 'rating_status']
+    filter_horizontal = ['actors']  # фильтр для связи many-to-many, аналогичен вертикальному фильтру
     list_editable = ['rating', 'currency', 'budget']
     list_filter = ['currency', 'director', RatingFilter]
     search_fields = ['name__istartswith', 'rating', 'currency',
@@ -91,5 +92,10 @@ class MovieAdmin(admin.ModelAdmin):
 @admin.register(Director)  # способ регистрайии №2
 class DirectorAdmin(admin.ModelAdmin):
     list_display = ['full_name']
+
+
+@admin.register(Actor)  # способ регистрайии №2
+class ActorAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'gender']
 
 # admin.site.register(Movie, MovieAdmin)  # способ регистрайии №1
